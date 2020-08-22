@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>WEB AGV 2 WHEELS</title>
+  <meta charset="utf-8">
+<style>
+
+  /* Style the header */
+   header {
+    padding: 5px;
+      text-align: center;
+      font-size: 20px;
+      color: white;
+      font-family: Georgia, sans-serif;
+      background-color: #FF7F00;
+  }
+
+  /* Style the input text */
+   input[type=number]{
+    background: #fff;
+    width: 50%;
+    height: 30px;
+    border: none;
+    outline:none;
+    padding: 0 25px;
+    border-radius: 15px 0 0 15px;
+    transition:.3s;
+   }
+   input[type=number]:hover {
+    border-color: #fff;
+    box-shadow: 0 0 4px 0 #fff;
+    background: #ffc107;
+   }
+
+   /* Style the input */
+   input {
+    position: relative;
+    display: inline-block;
+    font-size: 15px;
+    box-sizing:border-box;
+    transition:.5s;
+   }
+
+   /* Style the class pid-section */
+   .pid-section {
+    position:absolute;
+    left: 56%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    font-family: Georgia, sans-serif;
+   }
+
+
+   /* Style the botton start stop */
+   .btn-start{
+    position: relative;
+    left: -10px;
+    border-radius: 15px 15px 15px 15px;
+    width: 20%;
+    height: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #ffc107;
+    color: #fff;
+    font-family: Georgia, sans-serif;
+   }
+   .btn-stop{
+    position: relative;
+    left: 10px;
+    border-radius: 15px 15px 15px 15px;
+    width: 20%;
+    height: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #ffc107;
+    color: #fff;
+    font-family: Georgia, sans-serif;
+   }
+   .btn-CWM{
+   position: relative;
+    border-radius: 15px 15px 15px 15px;
+    width: 20%;
+    height: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #ffc107;
+    color: #fff;
+    font-family: Georgia, sans-serif;
+   }
+
+
+   /* Style the botton pid */
+   .button-kp-ki-kd-speed{
+    position: relative;
+    left: -4px;
+    top: -1px;
+    border-radius: 0 15px 15px 0;
+    width: 20%;
+    height: 30px;
+    border: none;
+    outline: none;
+    cursor: pointer;
+    background: #ffc107;
+    color: #fff;
+    font-family: Georgia, sans-serif;
+   }
+   button[type=button]:hover {
+    border-color: #fff;
+    box-shadow: 0 0 4px 0 #fff;
+    background: #FF7F00;
+   }
+
+   /* Style the footer */
+   footer {
+      background-color: #FF7F00;
+      padding: 8px;
+      text-align: center;
+      color: white;
+      font-family: Georgia, sans-serif;
+   }
+
+   label{
+    color: white;
+      font-family: Georgia, sans-serif;
+      font-size: 15px;
+   }
+
+   /* Style the section start-stop */
+   .start-stop-section{
+    position:absolute;;
+    left: 56.3%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    font-family: Georgia, sans-serif;
+   }
+
+   /* Style the section span-pid */
+   .span-pid-section{
+    position: absolute;
+    left: 49.6%;
+    transform: translate(-50%, -50%);
+    font-family: Georgia, sans-serif;
+    background: #fff;
+    padding: 5px 20px;
+    border-radius: 20px;
+   }
+
+
+   .span-kp{
+    font-size: 14px;
+    color: #000;
+    margin-left: 0px;
+   }
+   .isi-span_kp{
+    font-size: 17px;
+    color: #000;
+    margin-left: 0px;
+   }
+   .span-ki{
+    font-size: 14px;
+    color: #000;
+    margin-left: 10px;
+   }
+   .isi-span_ki{
+    font-size: 17px;
+    color: #000;
+    margin-left: 0px;
+   }
+   .span-kd{
+    font-size: 14px;
+    color: #000;
+    margin-left: 10px;
+   }
+   .isi-span_kd{
+    font-size: 17px;
+    color: #000;
+    margin-left: 0px;
+   }
+   .span-speed{
+    font-size: 14px;
+    color: #000;
+    margin-left: 10px;
+   }
+   .isi-span_speed{
+    font-size: 17px;
+    color: #000;
+    margin-left: 0px;
+   }
+   .sensor-ultra{
+    text-align:center;
+    color: #FF7F00;
+   }
+
+  .dht {
+      color: white;
+      text-align: center;
+    }
+  
+    .agvstate{
+      text-align: center;
+      font-size: 14px;
+      color: white;
+  }
+
+  .placeholder{
+    font-family: Georgia, sans-serif;
+  }
+
+  .link,.link:hover{
+    text-decoration: none;
+    color: #fff;
+  }
+
+ .dsn{
+    font-size: 10px;
+  }
+
+
+</style>
+</head>
+
+<body style="background-color:black;
+       font-family: Georgia, sans-serif;">
+  <header>
+  <h3>WEB CONTROLLING AGV TWO WHEELS</h3>
+  <p><a class="link" href="https://www.polman.astra.ac.id/index.php/id/courses/mekatronika" target="_blank">Program Studi Mekatronika</a></p>
+  </header>
+  <br><br><br>
+
+  <div class="start-stop-section">
+      <button type="button" onclick="sendData(1)" class="btn-start">START</button>
+      <label class="agvstate"> AGV State : </label>
+      <label class="agvstate"><span id="isiStatusAGV">N/A</span></label>
+      <button type="button" onclick="sendData(0)" class="btn-stop">STOP</button>
+  </div><br><br><br>
+
+  <div class="pid-section">
+      <input type="number" min="0" max="50" id="KP" class="placeholder" placeholder="Input KP Value">
+      <button type="button" id="CekKP" onclick="sendDataKP()" class="button-kp-ki-kd-speed">SET KP</button>
+  </div><br><br>
+
+  <div class="pid-section">
+      <input type="number" min="0" max="50" id="KI" class="placeholder" placeholder="Input KI Value">
+      <button type="button" id="CekKI" onclick="sendDataKI()" class="button-kp-ki-kd-speed">SET KI</button>
+  </div><br><br>
+  
+  <div class="pid-section">
+      <input type="number" min="0" max="50" id="KD" class="placeholder" placeholder="Input KD Value">
+      <button type="button" id="CekKD" onclick="sendDataKD()" class="button-kp-ki-kd-speed">SET KD</button>
+  </div><br><br>
+
+  <div class="pid-section">
+      <input type="number" min="0" max="60" id="Speed" class="placeholder" placeholder="Input Speed Value">
+      <button type="button" id="CekSpeed" onclick="sendDataSpeed()" class="button-kp-ki-kd-speed">SET SPEED</button>
+  </div><br><br><br>
+
+  <div class="span-pid-section">
+      <label class="span-kp" > KP : </label>
+      <a class="isi-span_kp" ><span id="isiKP" >0</span></a>
+
+      <label class="span-ki" > KI : </label>
+      <a class="isi-span_ki" ><span id="isiKI" >0</span></a>
+
+      <label class="span-kd" > KD : </label>
+      <a class="isi-span_kd" ><span id="isiKD" >0</span></a>
+
+      <label class="span-speed" > Speed : </label>
+      <a class="isi-span_speed" ><span id="isiSpeed" >0</span></a>
+  </div><br>
+
+  <div class="">
+      <a class="sensor-ultra" ><h5><span id="isiSensor" > </span></h5></a>
+  </div>
+
+  <div class="dht">
+          <label><h4> MONITORING </h4></label>
+          <label> Humidity : </label>
+          <label><span id="isiStatusHumidity">N/A</span></label><label> % </label><br>
+          <label> Celcius Temperature : </label>
+          <label><span id="isiStatusCelcius">N/A</span></label><label> ⁰C </label><br>
+          <label> Fahrenheit Temperature : </label>
+          <label><span id="isiStatusFahrenheit">N/A</span></label><label> ⁰F </label><br>
+  </div><br><br>
+
+  <div class="dht">
+      <label><h4> DECISION MODE </h4></label>
+      <button type="button" onclick="sendDataCWM(1)" class="btn-CWM">TURN LEFT</button>
+      <button type="button" onclick="sendDataCWM(3)" class="btn-CWM">STRAIGHT</button>
+      <button type="button" onclick="sendDataCWM(2)" class="btn-CWM">TURN RIGHT</button>
+      <br><br>
+        <label> MODE : </label>
+        <label><span id="isiStatusCWM">N/A</span></label><br>
+  </div><br><br><br>
+  
+  
+<footer>
+  <h2>Presented by:</h2>
+    <p>
+    <a class="link" href="https://wa.me/6281219959899" target="_blank"> Danang Misbachul Muhim </a></br>
+    <a class="link" href="https://wa.me/6287717451998" target="_blank"> Inziansyah Eko Wardono </a></br>
+    <a class="link" href="https://wa.me/6282328650575" target="_blank"> Triyoko Yuliansyah </a></br><br>
+    <a class="link" href="https://www.polman.astra.ac.id/index.php/id/" target="_blank"> Politeknik Manufaktur Astra @2019 </a></br>
+    <a class="dsn"> Designed by iTeam 2 Project </a>
+    </p>
+</footer>
+
+</body>
+</html>
